@@ -1,0 +1,119 @@
+/**
+ * Tooltip
+ */
+
+ .c-tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .c-tooltip__popup {
+    z-index: 90;
+    position: absolute;
+    width: max-content;
+    max-width: 13.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: $border-radius;
+    background-color: colour("neutral", "black");
+    color: colour("neutral", "white");
+    font-size: 0.875rem;
+    word-break: initial;
+    
+    &::before {
+      position: absolute;
+      width: 7.5px;
+      height: 7.5px;
+      background-color: colour("neutral", "black");
+      content: "";
+    }
+  }
+  
+  [role="tooltip"] {
+    display: none;
+  }
+  
+  a:hover + [role="tooltip"],
+  a:focus + [role="tooltip"],
+  button:hover + [role="tooltip"],
+  button:focus + [role="tooltip"],
+  [role="tooltip"]:hover,{
+    display: table-cell;
+  }
+  
+  /**
+   * Tooltip - Delay
+   */
+  
+  .c-tooltip--delay .c-tooltip__popup {
+    opacity: 0;
+    animation-name: tooltip-appear;
+    animation-duration: 0.1s;
+    animation-timing-function: ease-in;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes tooltip-appear {
+    from { opacity: 0 }
+    to { opacity: 1 }
+  }
+  
+  /**
+   * Tooltip - Position
+   */
+  
+  .c-tooltip--position-top .c-tooltip__popup {
+    top: -7.5px;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    
+    &::before {
+      bottom: -7.5px;
+      left: 50%;
+      transform:
+        translate(-50%, -50%)
+        rotate(45deg);
+    }
+  }
+  
+  .c-tooltip--position-right .c-tooltip__popup {
+    top: 50%;
+    right: -7.5px;
+    transform: translate(100%, -50%);
+    
+    &::before {
+     left: -7.5px;
+     top: 50%;
+     transform:
+      translate(50%, -50%)
+      rotate(45deg);
+    }
+  }
+  
+  .c-tooltip--position-bottom .c-tooltip__popup {
+    bottom: -7.5px;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    
+    &::before {
+      top: -7.5px;
+      left: 50%;
+      transform:
+        translate(-50%, 50%)
+        rotate(45deg);
+    }
+  }
+  
+  .c-tooltip--position-left .c-tooltip__popup {
+    top: 50%;
+    left: -7.5px;
+    transform: translate(-100%, -50%);
+    
+    &::before {
+     right: -7.5px;
+     top: 50%;
+     transform:
+      translate(-50%, -50%)
+      rotate(45deg);
+    }
+  }

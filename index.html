@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-secondary">
+    <div id="post" class="text-center">
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Company</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                </tr>
+            </thead>
+            <tbody v-for="user in users">
+                <tr>
+                    <th scope="row" class="table-primary" @click="getCurrentUser(user)"> {{user.name}}</th>
+                    <td class="table-success">{{user.company.name}}</td>
+                    <td class="table-danger">{{user.email}}</td>
+                    <td class="table-warning">{{user.phone}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <!-- <user :user="currentUser"></user> -->
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
