@@ -1,11 +1,7 @@
 Vue.component('user', {
     props: ['user'],
     template: `
-    <div>
-    <p>{{user.username}}</p>
-    <p>{{user.address}}</p>
-    <p>{{user.website}}</p>
-    </div>
+
     `
 })
 
@@ -13,8 +9,11 @@ new Vue({
     el: '#post',
     data: () => {
         return {
-            // currentPost: '',
-            users: [],
+            currentUser: '',
+            users: [
+
+            ],
+            complexFields: ['address', 'company']
         }
     },
     methods: {
@@ -24,9 +23,9 @@ new Vue({
                     this.users = response.data
                 })
         },
-        // getCurrentPost(post) {
-        //     this.currentPost = post
-        // }
+        getCurrentPost(user) {
+            this.currentUser = user
+        }
 
     },
     created() {

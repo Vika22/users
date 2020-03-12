@@ -24,16 +24,49 @@
             </thead>
             <tbody v-for="user in users">
                 <tr>
-                    <th scope="row" class="table-primary" @click="getCurrentUser(user)"> {{user.name}}</th>
+                    <th scope="row" class="table-primary" @click="getCurrentUser(user)">
+                        <div class="tooltips">{{user.name}}
+                            <span class="tooltipstext">
+                                <div v-for="(item, key) in user">
+                                    <template v-if="complexFields.includes(key)">
+                                        <ul class="m-0 p-0">
+                                            <p class="text-capitalize mb-1"><u>{{ key }}</u>:</p>
+                                            <li v-for="(subitem, key) in item">
+                                                <span v-if="key !== 'geo'">
+                                                    {{ subitem }}
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </template>
+                                    <template v-else>
+                                        {{ item }}
+                                    </template>
+                                </div>
+                                <!-- <div>{{user.id}}</div>
+                                <div>{{user.name}}</div>
+                                <div>{{user.username}}</div>
+                                <div>{{user.email}}</div>
+                                <div>{{user.address.street}}</div>
+                                <div>{{user.address.suite}}</div>
+                                <div>{{user.address.city}}</div>
+                                <div>{{user.address.zipcode}}</div>
+                                <div>{{user.address.geo.lat}}</div>
+                                <div>{{user.address.geo.lng}}</div>
+                                <div>{{user.phone}}</div>
+                                <div>{{user.website}}</div>
+                                <div>{{user.company.name}}</div>
+                                <div>{{user.company.catchPhrase}}</div>
+                                <div>{{user.company.bs}}</div> -->
+                            </span>
+                        </div>
+                    </th>
                     <td class="table-success">{{user.company.name}}</td>
                     <td class="table-danger">{{user.email}}</td>
                     <td class="table-warning">{{user.phone}}</td>
                 </tr>
             </tbody>
         </table>
-
-
-        <!-- <user :user="currentUser"></user> -->
+        <user :user="currentUser"></user>
     </div>
 
 
